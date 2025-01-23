@@ -31,15 +31,20 @@ export default function Dashboard() {
 
   const fetchBookings = async () => {
     try {
-      const { blobs } = await list();
-      const bookingBlobs = blobs.filter((blob) =>
-        blob.pathname.startsWith('consultation-')
-      );
-      const bookingPromises = bookingBlobs.map((blob) =>
-        fetch(blob.url).then((res) => res.json())
-      );
-      const bookingData = await Promise.all(bookingPromises);
-      setBookings(bookingData);
+      const response = await fetch('/api/proxy');
+      if (response.ok) {
+        const { blobs } = await response.json();
+        const bookingBlobs = blobs.filter((blob) =>
+          blob.pathname.startsWith('consultation-')
+        );
+        const bookingPromises = bookingBlobs.map((blob) =>
+          fetch(blob.url).then((res) => res.json())
+        );
+        const bookingData = await Promise.all(bookingPromises);
+        setBookings(bookingData);
+      } else {
+        throw new Error('Failed to fetch blobs');
+      }
     } catch (error) {
       console.error('Error fetching bookings:', error);
     } finally {
@@ -133,6 +138,14 @@ export default function Dashboard() {
                         </div>
                         <div className='py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
                           <dt className='text-sm font-medium text-gray-500'>
+                            Details
+                          </dt>
+                          <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                            {booking.details}
+                          </dd>
+                        </div>
+                        <div className='py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+                          <dt className='text-sm font-medium text-gray-500'>
                             Location
                           </dt>
                           <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
@@ -167,11 +180,10 @@ export default function Dashboard() {
                                     key={imgIndex}
                                     className='relative h-48 rounded-lg overflow-hidden'
                                   >
-                                    <Image
+                                    <img
                                       src={image || '/placeholder.svg'}
                                       alt={`Uploaded image ${imgIndex + 1}`}
-                                      layout='fill'
-                                      objectFit='cover'
+                                      className='object-cover h-full w-full'
                                     />
                                   </div>
                                 ))}

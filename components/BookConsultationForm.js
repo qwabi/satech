@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { MapPin, Upload } from 'lucide-react';
 import { put } from '@vercel/blob';
+import axios from 'axios';
 
 export default function BookConsultationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,47 +28,18 @@ export default function BookConsultationForm() {
     }
   }, [router.isReady, router.query, setValue]);
 
-  const sendPushNotification = async (data) => {
-    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
-    const pushbulletAccessToken =
-      process.env.NEXT_PUBLIC_PUSHBULLET_ACCESS_TOKEN;
-
-    if (!adminEmail || !pushbulletAccessToken) {
-      console.error('Pushbullet email or access token is missing.');
-      return;
-    }
-
-    const pusher = new Pushbullet(pushbulletAccessToken);
-
-    const title = 'New Service Request!';
-    const body = `
-    Hi Chucks, You have received a new booking with the following details
-
-    Name: ${data.name} 
-    Address:  ${data.address}
-    Problem: ${data.problem}
-    Cellphone: ${data.phone}
-    Email: ${data.email}
-    
-    Click this link to Whatsapp: htpps://wa.me/${data.phone}
-    `;
-
-    try {
-      await pusher.note(adminEmail, title, body);
-      console.log('Push sent successfully!');
-    } catch (error) {
-      console.error('Error sending Pushbullet push:', error);
-    }
-  };
-
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
+      console.log('Token:', process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN);
       // Upload images to Vercel Blob Storage
       const imageUrls = [];
       if (data.images && data.images.length > 0) {
         for (const file of data.images) {
-          const blob = await put(file.name, file, { access: 'public' });
+          const blob = await put(file.name, file, {
+            access: 'public',
+            token: process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN,
+          });
           imageUrls.push(blob.url);
         }
       }
@@ -84,13 +56,16 @@ export default function BookConsultationForm() {
       const blob = await put(
         `consultation-${Date.now()}.json`,
         JSON.stringify(formData),
-        { access: 'public' }
+        {
+          access: 'public',
+          token: process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN,
+        }
       );
-      sendPushNotification(formData);
+      await axios.post('/api/push', formData);
       alert(
         'Thank you for booking a consultation. Our team will contact you shortly.'
       );
-      reset();
+      //reset();
       setLocation(null);
     } catch (error) {
       console.error('Error submitting form:', error);
