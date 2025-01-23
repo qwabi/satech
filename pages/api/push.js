@@ -55,8 +55,6 @@ const sendPushNotification = async (data) => {
     Problem: ${data.problem}
     Cellphone: ${data.phone}
     Email: ${data.email}
-    
-    Click this link to WhatsApp: https://wa.me/${data.phone}
   `;
   const url = `https://wa.me/${data.phone}`;
   const { tempPath, cleanupCallback } = await saveImageToTempFile(
