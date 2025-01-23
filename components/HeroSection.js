@@ -65,6 +65,30 @@ export default function HeroSection() {
             >
               Book a Consultation
             </motion.a>
+            {/* Add SEO-friendly content */}
+            <div className='mt-8 text-white text-left'>
+              <h2 className='text-2xl font-semibold mb-4'>
+                Expert DStv Services in Queenstown
+              </h2>
+              <p className='mb-4'>
+                Welcome to SA Tech DStv Installers, your go-to experts for all
+                DStv installation and repair needs in Queenstown, South Africa.
+                Our team of certified technicians specializes in:
+              </p>
+              <ul className='list-disc list-inside mb-4'>
+                <li>Professional DStv dish installation</li>
+                <li>Signal troubleshooting and repairs</li>
+                <li>Extra view and TV link setups</li>
+                <li>Decoder testing and maintenance</li>
+                <li>TV mounting services</li>
+              </ul>
+              <p>
+                Serving Queenstown, Ezibeleni, Lesseyton, and surrounding areas,
+                we pride ourselves on delivering fast, reliable, and affordable
+                DStv solutions. Experience the best in home entertainment with
+                SA Tech DStv Installers.
+              </p>
+            </div>
           </motion.div>
           <motion.div
             className='md:w-1/2 grid grid-cols-2 gap-4'
