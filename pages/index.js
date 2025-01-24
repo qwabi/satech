@@ -10,9 +10,9 @@ export default function Home() {
   const siteTitle =
     'SA Tech DStv Installers - Expert DStv Installation & Repair in Queenstown';
   const siteDescription =
-    'Certified DStv installers in Queenstown, South Africa. We offer expert dish installations, signal repairs, and comprehensive DStv services. Fast, reliable, and affordable.';
-  const canonicalUrl = 'https://www.satechdstv.co.za'; // Replace with your actual domain
-  const ogImage = `${canonicalUrl}/og-image.jpg`; // Replace with your actual OG image path
+    'Certified Accredited DStv installers and technicians in Queenstown, South Africa. We offer expert dish installations, signal repairs, and comprehensive DStv services. Fast, reliable, and affordable.';
+  const canonicalUrl = 'https://www.satechdstv.ayabonga.com'; // Replace with your actual domain
+  const ogImage = `${canonicalUrl}/og-image.png`; // Replace with your actual OG image path
 
   return (
     <>
