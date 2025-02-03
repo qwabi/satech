@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Navbar from './Navbar';
 import Footer from './Footer';
-
+import { Analytics } from '@vercel/analytics/next';
 export default function Layout({ children }) {
   return (
     <div className='flex flex-col min-h-screen'>
@@ -17,6 +17,7 @@ export default function Layout({ children }) {
       </Head>
       <Navbar />
       <main className='flex-grow'>{children}</main>
+      <Analytics />
       <Footer />
     </div>
   );
