@@ -84,7 +84,7 @@ export const places = {
     'Qwabi',
     'Aloevale',
     'Combleigh',
-    'Queensaale',
+    'Queensdale',
     'Nkwanca',
     'Upper Ngonyama',
   ],
