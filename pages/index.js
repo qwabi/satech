@@ -8,9 +8,9 @@ import ContactUsSection from '../components/ContactUsSection';
 
 export default function Home() {
   const siteTitle =
-    'SA Tech DStv Installers - Expert DStv Installation & Repair in Queenstown';
+    'SA Tech | Best Accredited Expert DStv Installer in Queenstown | +27635168461 ';
   const siteDescription =
-    'Certified Accredited DStv installers and technicians in Queenstown, South Africa. We offer expert dish installations, signal repairs, and comprehensive DStv services. Fast, reliable, and affordable.';
+    'Certified Accredited and licensed proffesional expert DStv installers and technicians in Queenstown, South Africa. We offer expert dish installations, signal repairs, and comprehensive DStv services. Fast, reliable, and affordable.';
   const canonicalUrl = 'https://www.satechdstv.ayabonga.com'; // Replace with your actual domain
   const ogImage = `${canonicalUrl}/og-image.png`; // Replace with your actual OG image path
 
