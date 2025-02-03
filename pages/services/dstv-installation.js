@@ -40,7 +40,10 @@ const DstvInstallationPage = () => {
           name='description'
           content='Expert DStv installation, repair, and maintenance services across South Africa. Fast, reliable, and high-quality service for all types of DStv decoders.'
         />
-        <link rel='canonical' href='https://yourdomain.com/dstv-installation' />
+        <link
+          rel='canonical'
+          href='https://satechdstv.ayabonga.com/dstv-installation'
+        />
         <meta
           property='og:title'
           content='Professional DStv Installation Services in South Africa | SA Tech DStv Installers'
@@ -51,7 +54,7 @@ const DstvInstallationPage = () => {
         />
         <meta
           property='og:url'
-          content='https://yourdomain.com/dstv-installation'
+          content='https://satechdstv.ayabonga.com/dstv-installation'
         />
         <meta property='og:type' content='website' />
         <script type='application/ld+json'>

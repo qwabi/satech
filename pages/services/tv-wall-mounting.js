@@ -40,7 +40,10 @@ const TVWallMountingPage = () => {
           name='description'
           content='Expert TV wall mounting services for LCD, LED, Plasma, and Projection TVs. Professional installation, cable management, and custom mounting solutions.'
         />
-        <link rel='canonical' href='https://yourdomain.com/tv-wall-mounting' />
+        <link
+          rel='canonical'
+          href='https://satechdstv.ayabonga.com/tv-wall-mounting'
+        />
         <meta
           property='og:title'
           content='Affordable TV Wall Mounting Services in South Africa | SA Tech DStv Installers'
@@ -51,7 +54,7 @@ const TVWallMountingPage = () => {
         />
         <meta
           property='og:url'
-          content='https://yourdomain.com/tv-wall-mounting'
+          content='https://satechdstv.ayabonga.com/tv-wall-mounting'
         />
         <meta property='og:type' content='website' />
         <script type='application/ld+json'>
