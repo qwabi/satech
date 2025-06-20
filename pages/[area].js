@@ -243,7 +243,9 @@ const DSTVInstallationPage = ({ area }) => {
 
 export async function getStaticPaths() {
   const areas = flatten([places.towns, places.suburbsAndAreas]);
-  const paths = areas.map((area) => ({ params: { area } }));
+  const paths = areas.map((area) => ({
+    params: { area: area.split(' ').join('') },
+  }));
   return { paths, fallback: false };
 }
 
